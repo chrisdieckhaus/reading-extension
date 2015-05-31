@@ -1,17 +1,1 @@
-<!DOCTYPE html>
-<html ng-app="articleApp" ng-csp>
-  <head>
-    <title>Article</title>
-    <script src="angular.js"></script>
-    <script src="popup.js"></script>
-  </head>
 
-<body ng-controller="ReadingListCtrl">
-	<ul>
-		<li ng-repeat="article in articles">
-			<a href="{{ article.link }}">{{ article.title }}</a>
-		</li>
-	</ul>
-</body>
-
-</html>
