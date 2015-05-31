@@ -19,10 +19,11 @@
             <h2>Page:</h2>
             <div>{{title}}</div>
             <div>{{url}}</div>
-            <h2>Has Links:</h2>
+            <button ng-click="saveLink()">Save</button>
+            <h2>Reading list:</h2>
             <ul>
-                <li ng-repeat="pageInfo in pageInfos">
-                    <div>{{pageInfo.url}}</div>
+                <li ng-repeat="link in savedLinks">
+                    <div>{{ link }}<button ng-click="removeLink($index)">x</button></div>
                 </li>
             </ul>
         </div>
