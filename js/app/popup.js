@@ -12,7 +12,7 @@ myApp.controller("PageController", function($scope){
         if ($scope.savedLinks.indexOf($scope.url) !== -1){
           alert("Already in list");
         }else{
-          $scope.savedLinks.push($scope.url);
+          $scope.savedLinks.push({title: $scope.title, url: $scope.url});
         }
       };
 

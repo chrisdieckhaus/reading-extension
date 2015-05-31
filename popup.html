@@ -11,19 +11,18 @@
     </head>
     <body id="popup">
         <header>
-            <h1>AngularJS + Chrome Extension</h1>
+            <h1>Reading List</h1>
         </header>
 
         <div ng-controller="PageController">
-            <div>{{message}}</div>
-            <h2>Page:</h2>
-            <div>{{title}}</div>
-            <div>{{url}}</div>
+            <h5>Current page:</h5>
+            <a href="{{ url }}">{{ title }}</a>
             <button ng-click="saveLink()">Save</button>
-            <h2>Reading list:</h2>
+            <h5>To read:</h5>
             <ul>
                 <li ng-repeat="link in savedLinks">
-                    <div>{{ link }}<button ng-click="removeLink($index)">x</button></div>
+                    <a href="{{ link.url }}" target="_blank">{{ link.title }}</a>
+                    <button ng-click="removeLink($index)">x</button>
                 </li>
             </ul>
         </div>
