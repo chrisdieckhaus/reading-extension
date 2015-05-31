@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="AngularChromeEx" ng-csp>
+<html ng-app="ReaderChromeEx" ng-csp>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/popup.css">
@@ -12,7 +12,7 @@
     </head>
     <body id="popup">
         <div ng-controller="PageController">
-            <button ng-click="saveLink()" type="button" class="btn btn-info">Save current page</button>
+            <button ng-click="saveLink()" type="button" class="btn btn-info btn-block">Save current page</button>
 
             <h3>To read:</h3>
             <h3>{{ allLinks }}</h3>
