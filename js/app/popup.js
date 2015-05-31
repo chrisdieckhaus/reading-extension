@@ -1,6 +1,7 @@
 myApp.controller("PageController", function($scope){
   $scope.message = "Hello";
-
+  var localStorage.foo = "bar";
+  $scope.foo = localStorage.foo;
   chrome.tabs.query({'active': true},
   function(tabs){
     if (tabs.length > 0){
