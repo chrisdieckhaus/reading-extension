@@ -5,8 +5,16 @@ myApp.controller("PageController", function($scope){
     if (tabs.length > 0){
       $scope.title = tabs[0].title;
       $scope.url = tabs[0].url;
-      $scope.dateAdded = new Date();
-      console.log($scope.dateAdded);
+
+      d = new Date();
+      var yyyy = d.getFullYear().toString();
+      var mm = (d.getMonth()+1).toString(); // getMonth() is zero-based
+      var dd  = d.getDate().toString();
+      $scope.dateAdded = yyyy + (mm[1]?mm:"0"+mm[0]) + (dd[1]?dd:"0"+dd[0]);
+
+
+      alert($scope.dateAdded);
+
       $scope.savedLinks = allStorage();
 
       $scope.saveLink = function(){
@@ -34,7 +42,7 @@ myApp.controller("PageController", function($scope){
         i = 0;
 
     for (; i < keys.length; i++) {
-        archive.push({title: keys[i], url: localStorage.getItem(keys[i])});
+        archive.push({title: keys[i], url: localStorage.getItem(keys[i]) });
     }
     console.log(archive);
     return archive;
