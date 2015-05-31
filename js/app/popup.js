@@ -1,24 +1,23 @@
 myApp.controller("PageController", function($scope){
-  $scope.message = "Hello";
-  var localStorage.foo = "bar";
-  $scope.foo = localStorage.foo;
+  console.log(localStorage);
   chrome.tabs.query({'active': true},
   function(tabs){
     if (tabs.length > 0){
       $scope.title = tabs[0].title;
       $scope.url = tabs[0].url;
-      $scope.savedLinks = [];
+      $scope.dateAdded = new Date();
+      console.log($scope.dateAdded);
+      $scope.savedLinks = allStorage();
 
       $scope.saveLink = function(){
-        if ($scope.savedLinks.indexOf($scope.url) !== -1){
-          alert("Already in list");
-        }else{
-          $scope.savedLinks.push({title: $scope.title, url: $scope.url});
-        }
+        localStorage[$scope.title] = $scope.url;
+        allStorage();
+        $scope.savedLinks = allStorage();
       };
 
-      $scope.removeLink = function(index){
-        $scope.savedLinks.splice(index, 1);
+      $scope.removeLink = function(linkTitle){
+        localStorage.removeItem(linkTitle);
+        $scope.savedLinks = allStorage();
       };
 
       chrome.tabs.sendMessage(tabs[0].id, {'action': 'PageInfo'}, function(response){
@@ -27,4 +26,17 @@ myApp.controller("PageController", function($scope){
       });
     }
   });
+
+  function allStorage(){
+
+    var archive = [],
+        keys = Object.keys(localStorage),
+        i = 0;
+
+    for (; i < keys.length; i++) {
+        archive.push({title: keys[i], url: localStorage.getItem(keys[i])});
+    }
+    console.log(archive);
+    return archive;
+}
 });
